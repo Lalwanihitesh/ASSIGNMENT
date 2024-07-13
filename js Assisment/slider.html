@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .one{
+        height: 101vh;
+        width: 70%;
+        border: 2px solid black;
+        margin-left: 15%;
+        background-image: url(img/sweemingpool.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        
+    }
+    label{
+        
+     font-size: larger;   
+    }
+    h2{
+        text-align: center;
+    }
+    input,label,select{
+        margin-left: 15%;
+        width: 70%;
+        height:23px;
+        font-size: 15px;
+    }
+    button{
+        height: 30px;
+        width: 170px;
+        margin-left: 38%;
+        background-color: blue;
+        color: black;
+        font-size: 15px;
+        border-radius: 20px;
+    }
+   
+</style>
+
+<body>
+    <div class="one">
+    <form action="" onsubmit="main()">
+        <h2>RESTAURANT BOOKING FORM</h2>
+        <p id="msg"></p>
+        <label for="booking">choise of booking:</label>
+        <br>
+        <select name="" id="booking" onchange="display()">
+            <option value="" style="display: none;">choose your booking</option>
+            <option value="fullday">full day booking</option>
+            <option value="halfday">half day booking</option>
+            <option value="hourly">hourly booking</option>
+        </select>
+        <br>
+        <label for="username">username:</label>
+        <br>
+        <input type="text" id="username" placeholder="enter your name">
+        <br>
+        <label for="mobile">contect number:</label>
+        <br>
+        <input type="tel" id="mobile" placeholder="enter your contect number ">
+        <br>
+        <label for="email">email id:</label>
+        <br>
+        <input type="email" id="email" placeholder="enter your email id ">
+        <br>
+        <label for="person"> number of person:</label>
+        <br>
+        <input type="number" id="person" placeholder="enter the number of person">
+        <br>
+        <div id="datesection">
+            <label for="date"> enter the date:</label>
+            <br>
+            <input type="date" id="date" placeholder="enter the date">
+        </div>
+
+        <div id="slotsection">
+            <label for="slot">slot booking:</label>
+            <br>
+            <select name="" id="slot">
+                <option value="" style="display: none;">choose your slot</option>
+                <option value="breakfast">breakfast</option>
+                <option value="lunch">lunch</option>
+                <option value="dinner">dinner</option>
+            </select>
+        </div>
+
+        <div id="timesection">
+            <label for="time"> enter the time:</label>
+            <br>
+            <input type="time" id="time" placeholder="enter the time">
+        </div>
+        <br>
+        <button id="button">submit</button>
+    </form>
+</div>
+    <script>
+
+        function main() {
+            let username = document.getElementById("username").value;
+            let mobile = document.getElementById("mobile").value;
+            let email = document.getElementById("email").value;
+            let person = document.getElementById("person").value;
+            let date = document.getElementById("date").value;
+            let slot = document.getElementById("slot").value;
+            let time = document.getElementById("time").value;
+            if (username == "" || username == null) {
+                alert("please enter the username")
+                return false;
+            }
+            else if (mobile == "" || mobile == null) {
+                alert("please enter the mobile number")
+                return false;
+            }
+            else if (email == "" || email == null) {
+                alert("please enter the email id")
+                return false;
+            }
+            else if (person == "" || person == null) {
+                alert("please enter the number of person")
+                return false;
+            }
+            else if (date == "" || date == null) {
+                alert("please enter the date")
+                return false;
+            }
+            else if (slot == "" || slot == null) {
+                alert("please enter your slot")
+                return false;
+            }
+            else if (time == "" || time == null) {
+                alert("please enter the time")
+                return false;
+            }
+        }
+        function display() {
+            let booking = document.getElementById("booking").value;
+            let datesection = document.getElementById("datesection");
+            let slotsection = document.getElementById("slotsection");
+            let timesection = document.getElementById("timesection");
+
+            if (booking == "fullday") {
+                timesection.style.display = "none";
+                slotsection.style.display = "none";
+                return false;
+            }
+            else if (booking == "halfday") {
+                timesection.style.display = "none";
+                slotsection.style.display="block";
+                datesection.style.display="block";
+                return false;
+            }
+            else if (booking == "hourly") {
+                slotsection.style.display = "none";
+                timesection.style.display = "block";
+                datesection.style.display="block";
+                return false;
+            }
+        }
+    </script>
+</body>
+
+</html>
